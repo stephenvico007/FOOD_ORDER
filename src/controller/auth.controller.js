@@ -50,12 +50,12 @@ export const Register = async (req, res) => {
         address: user.address,
       },
     });
-  } catch (error) {
-    res.status(500).json({
-      message: "Registration failed",
-      error: error.message,
-    });
-  }
+  }  catch (error) {
+  res.status(500).json({
+    message: "Registration failed",
+    error: error.message,
+  });
+}
 };
 
 export const Login = async (req, res) => {
