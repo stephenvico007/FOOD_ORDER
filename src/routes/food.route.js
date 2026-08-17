@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import {
+import {createFood, getFoods, getFood, updateFood, deleteFood, restoreFood,updateFood, deleteFood, restoreFood, uploadFoodImage
     createFood,
     getFoods,
     getFood,
@@ -52,15 +52,9 @@ foodRouter.patch(
 
 
 // Delete food
-foodRouter.delete(
-    "/:id",
-    protect,
-    isRole(["admin"]),
-    deleteFood
-);
+foodRouter.delete("/:id",protect, isRole(["admin"]), deleteFood);
 
 
-// Restore food
 foodRouter.patch(
     "/:id/restore",
     protect,
@@ -69,7 +63,6 @@ foodRouter.patch(
 );
 
 
-// Upload food image
 foodRouter.patch(
     "/:id/image",
     protect,
@@ -79,7 +72,6 @@ foodRouter.patch(
 );
 
 
-// Availability
 foodRouter.patch(
     "/:id/availability",
     protect,

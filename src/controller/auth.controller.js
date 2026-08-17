@@ -1,6 +1,6 @@
 import User from "../model/user.model.js";
 import bcrypt from "bcrypt";
-import { generateToken } from "../utils/generateToken.js";
+import generateToken from "../utils/generate_Token.js";
 
 export const Register = async (req, res) => {
   try {
@@ -58,7 +58,6 @@ export const Register = async (req, res) => {
   }
 };
 
-// LOGIN
 export const Login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -88,8 +87,11 @@ export const Login = async (req, res) => {
       });
     }
 
+    const token = generateToken(user._id);
+
     res.status(200).json({
       message: "Login successful",
+      token,
       user: {
         id: user._id,
         name: user.name,
