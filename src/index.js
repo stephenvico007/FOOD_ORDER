@@ -1,10 +1,9 @@
 import dotenv from "dotenv";
-import app from "./app.js";
-import connectDB from "./config/database.js";
 
 dotenv.config();
 
-console.log("MONGO_URI exists:", !!process.env.MONGO_URI);
+const { default: app } = await import("./app.js");
+const { default: connectDB } = await import("./config/database.js");
 
 const PORT = 5000;
 
