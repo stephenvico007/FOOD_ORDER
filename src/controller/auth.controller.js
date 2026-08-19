@@ -4,9 +4,9 @@ import generateToken from "../utils/generate_Token.js";
 
 export const Register = async (req, res) => {
   try {
-    const { name, email, password, phone, address, role } = req.body;
+    const { name, email,lastname, password, phone, address, role } = req.body;
 
-    if (!name || !email || !password || !phone) {
+    if (!name || !email || !lastname || !password || !phone) {
       return res.status(400).json({
         message: "Name, email, password and phone are required",
       });
@@ -33,6 +33,7 @@ export const Register = async (req, res) => {
     const user = await User.create({
       name,
       email,
+      lastname,
       password: hashedPassword,
       phone,
       address,
@@ -45,6 +46,7 @@ export const Register = async (req, res) => {
         id: user._id,
         name: user.name,
         email: user.email,
+        lastname: user.lastname,
         phone: user.phone,
         role: user.role,
         address: user.address,
