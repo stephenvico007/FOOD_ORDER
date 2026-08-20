@@ -17,13 +17,18 @@ app.use(cors())
 
 app.use(express.json());
 
+app.get("/", (req, res) => {
+    res.send("Food_Order API is running");
+});
+
+
 
 app.use("/auth", authRouter);
 app.use("/api/category", categoryRouter);
-app.use("api/food", foodRouter);
+app.use("/api/food", foodRouter);
 app.use("/api/order", orderRouter);
 app.use("/api/restaurant", restaurantRouter);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 export default app;

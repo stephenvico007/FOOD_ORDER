@@ -4,6 +4,8 @@ import slugify from "slugify";
 
 export const createCategory = async (req, res) => {
     try {
+        console.log("BODY:", req.body);
+        
         const { name, description } = req.body;
 
         if (!name || !description) {
